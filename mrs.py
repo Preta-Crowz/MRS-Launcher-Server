@@ -78,11 +78,11 @@ def response(res):
         return res.encode().decode('utf8')
 
 def loop():
-    logger.info("Starting up..")
+    # logger.info("Starting up..")
     try:
         app.run(host=config['HOST'],port=config['PORT'])
     except:
-        logger.exception("Server crashed!")
-        logger.info("Restarting server..")
+        # logger.exception("Server crashed!")
+        # logger.info("Restarting server..")
         loop()
 loop()
