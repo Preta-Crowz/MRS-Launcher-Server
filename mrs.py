@@ -3,30 +3,31 @@
 import json
 config = json.load(open("config.json"))
 
-import zerologger as zlog
-logger = zlog.Logger(config["RAVEN"]["KEY"],config["RAVEN"]["SECRET"],config["RAVEN"]["PROJECT"],config["APPNAME"],config["LOG"])
+# import zerologger as zlog
+# logger = zlog.Logger(config["RAVEN"]["KEY"],config["RAVEN"]["SECRET"],config["RAVEN"]["PROJECT"],config["APPNAME"],config["LOG"])
 
 from flask import Flask,render_template,request,send_file
-logger.debug("flask imported")
-# try:
-#     from winmagic import magic
-# except:
-#     import magic
-# logger.debug("magic imported")
-# import time
-# logger.debug("time imported")
-# import re
-# logger.debug("re imported")
-# import requests
-# logger.debug("requests imported")
-
-logger.info("Setting up application")
+# logger.debug("flask imported")
+'''
+try:
+    from winmagic import magic
+except:
+    import magic
+logger.debug("magic imported")
+import time
+logger.debug("time imported")
+import re
+logger.debug("re imported")
+import requests
+logger.debug("requests imported")
+'''
+# logger.info("Setting up application")
 app = Flask(config["APPNAME"])
-
+'''
 import logging
 logging.getLogger('werkzeug').setLevel(-100)
 logger.debug("Flask logging disabled")
-
+'''
 
 
 @app.route('/modpack')
@@ -53,7 +54,7 @@ def ip(): # Based on openNAMU ip_check
 
 
 def response(res):
-    rurl = request.url.replace("http://mrs.mc-srv.com:10000","")
+    '''rurl = request.url.replace("http://mrs.mc-srv.com:10000","")
     if request.method == "GET":
         logger.info("{} got {}".format(ip(),rurl))
     elif request.method == "POST":
@@ -70,7 +71,7 @@ def response(res):
         logger.debug("Json : {}".format(request.json))
     if request.headers:
         logger.debug("Headers : {}".format(request.json))
-    logger.debug("UA : {}".format(request.user_agent))
+    logger.debug("UA : {}".format(request.user_agent))'''
     if type(res) == dict:
         return json.dumps(res, ensure_ascii=False).encode().decode('utf8')
     elif type(res) == str:
